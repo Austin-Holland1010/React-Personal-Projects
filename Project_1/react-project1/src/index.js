@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Header from './Header';
+import Footer from './Footer';
+import MainContent from './MainContent';
 
 /**
 Challenge: find out what happens if we try to append JSX
@@ -47,6 +50,7 @@ Hints:
   just like in HTML. In the slide, I have it set to 40px
  */
 
+  /*
   function ReactLogo() {
    return (
       <img src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" alt="React Logo" width ="150" height ="50"></img>
@@ -75,6 +79,7 @@ Hints:
       <BigHeader />
     </div>
   );
+  */
 
   /*
 1. Why do we need to `import React from "react"` in our files?
@@ -102,3 +107,213 @@ const page = (
   more modular components. These components can be combined to perfrom a 
   larger function.
 */
+/*
+function TemporaryName() {
+  return (
+      <div>
+          <img src="./react-logo.png" width="40px" />
+          <h1>Fun facts about React</h1>
+          <ul>
+              <li>Was first released in 2013</li>
+              <li>Was originally created by Jordan Walke</li>
+              <li>Has well over 100K stars on GitHub</li>
+              <li>Is maintained by Facebook</li>
+              <li>Powers thousands of enterprise apps, including mobile apps</li>
+          </ul>
+      </div>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<TemporaryName />);
+*/
+
+/**
+Challenge: 
+
+Part 1: Create a page of your own using a custom Page component
+
+It should return an ordered list with the reasons why you're
+excited to be learning React :)
+
+Render your list to the page
+
+function MyReasons() {
+  return(
+    <div>
+      <ol>
+        <li>React is very employable</li>
+        <li>I like learning new things</li>
+        <li>Many people I know use React</li>
+      </ol>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<MyReasons />);
+*/
+
+/**
+Challenge:
+Part 2: 
+- Add a `header` element with a nested `nav` element. Inside the `nav`,
+  include a `img` element with the image of the React logo inside
+  (src="./react-logo.png") and make sure to set the width to something
+  more manageable so it doesn't take up the whole screen
+- Add an `h1` with some text describing the page. (E.g. "Reasons
+  I'm excited to learn React"). Place it above the ordered list.
+- Add a `footer` after the list that says: 
+    "© 20xx <last name here> development. All rights reserved."
+ */
+/*
+function MyHeader() {
+  return (
+  <header>
+    <nav>
+      <img src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" alt="React Logo" width ="150" height ="50"></img>
+    </nav>
+    <h1>Reasons why I'm excited to learn React!</h1>
+  </header>
+  );
+}
+
+function MyFooter() {
+  return (
+    <footer>
+      <p>© 2023 Holland development. All rights reserved.</p>
+    </footer>
+  );
+}
+
+function MyReasons() {
+  return(
+  <div>
+      <ol>
+        <li>React is very employable</li>
+        <li>I like learning new things</li>
+        <li>Many people I know use React</li>
+      </ol>
+    </div>
+  );
+}
+    
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(
+  <div>
+  <MyHeader />
+  <MyReasons />
+  <MyFooter />
+  </div>
+  );
+  */
+
+/*  
+1. What is a React component?
+  A React component is a function that returns React elements. It 
+  can be called and have its content displayed when called in the 
+  render class
+
+2. What's wrong with this code?
+```
+function myComponent() {
+    return (
+        <small>I'm tiny text!</small>
+    )
+}
+```
+  The name of the function needs to be capitalized
+
+3. What's wrong with this code?
+```
+function Header() {
+    return (
+        <header>
+            <nav>
+                <img src="./react-logo.png" width="40px" />
+            </nav>
+        </header>
+    )
+}
+
+ReactDOM.render(Header(), document.getElementById("root"))
+~~~
+  The return needs a ';' after the closing bracket
+  */
+
+  /**
+Challenge: 
+
+- Move the `footer` into its own component called "Footer" 
+  and render that component inside the Page component.
+- Move the `h1` and `ol` together into another component
+  called "MainContent" and render inside Page as well.
+*/
+
+/**
+Challenge: 
+
+- Add an `ul` inside the Header's `nav` and create
+  the following `li`s: "Pricing", "About", & "Contact"
+- Using flexbox, line up the nav items horizontally, and
+  put them inline with the React logo.
+- Change the image styling to happen in CSS instead of in-line
+  For practice, add a new class to the image in order to style it
+*/
+/*
+function MyHeader() {
+  return (
+  <header>
+    <nav className="nav">
+      <img src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" alt="React Logo" className="Img"></img>
+      <ul className="nav-items">
+        <li>Pricing</li>
+        <li>About</li>
+        <li>Contacts</li>
+      </ul>
+    </nav>
+  </header>
+  );
+}
+*/
+
+/**
+Challenge: move the Footer and MainContent components
+into their own files.
+*/
+/*
+function MyFooter() {
+  return (
+    <footer>
+      <p>© 2023 Holland development. All rights reserved.</p>
+    </footer>
+  );
+}
+
+function MainContent() {
+  return(
+    <div>
+      <h1>Reasons why I'm excited to learn React!</h1>
+      <ol>
+        <li>React is very employable</li>
+        <li>I like learning new things</li>
+        <li>Many people I know use React</li>
+      </ol>
+    </div>
+    )
+}
+*/
+  
+function Page() {
+   return (
+    <div>
+      <Header />
+      <MainContent />
+      <Footer />
+    </div>
+  )
+}
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<Page />)
