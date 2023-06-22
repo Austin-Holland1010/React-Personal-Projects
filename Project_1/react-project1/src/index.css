@@ -52,6 +52,9 @@ nav > h4 {
 .Main-Div {
   background-color: #282D35;
   padding: 57px 27px;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlj8kunii7MJndz41513lXZ8GYD5-wgiIzQg&usqp=CAU");
+  background-repeat: no-repeat;
+  background-position: right 75%;
 }
 
 .Main-Header {
@@ -70,6 +73,26 @@ nav > h4 {
     line-height: 19px;
     padding-block: 10px;
 }
+
+.Main-ul > li::marker {
+  font-size: 1.4rem;
+  color: #61DAFB;
+}
+
+/* 
+Challenge: Place the gray react logo in the background
+
+Don't use an `img` element, but rather set it as the
+`background-image` of the `main` element.
+
+Hint: you'll need to use the following properties:
+- background-image
+- background-repeat
+- background-position
+
+(Or the shorthand `background` property with values for all
+those other properties)
+*/
 
 
 
