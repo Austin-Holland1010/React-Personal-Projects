@@ -1,0 +1,1 @@
+This project was created to learn how to make data-driven web applications in React.js. It contains all the work done to complete module 2 of freeCodeCamp's React.js course
