@@ -19,18 +19,35 @@ Notes:
   this data into the component.
 */
 
-export default function Card() {
+export default function Card(props) {
+  const img = "/images/" + props.item.coverImg
+  const rating = props.item.stats.rating
+  const reviewCount = props.item.stats.reviewCount
+  const country = props.item.country
+  const title = props.item.title
+  const price = props.item.price
+  const openSpots = props.item.openSpots
+
+  let badgeText
+  if(openSpots === 0)
+  {
+    badgeText = "SOLD OUT"
+  } else if (props.country === "Online")
+  {
+    badgeText = "ONLINE"
+  }
     return (
-        <div className="card">
-        <img src="https://www.athletespeakers.com/storage/celebrities/1627410490_Katie-Zaferes-Banner-1.jpg" className="card--image" />
+      <div className="card">
+        {badgeText && <div className="card--badge">{badgeText}</div>}
+        <img src={img} className="card--image" />
         <div className="card--stats">
-            <img className="card--star" src="https://i.pinimg.com/originals/83/2c/09/832c093780b2f06ccdb36684dae10b3c.png" />
-            <span>5.0</span>
-            <span className="grey">(6) • </span>
-            <span className="grey">USA</span>
+            <img className="card--star" src="/images/star.png" />
+            <span>{rating}</span>
+            <span className="grey">({reviewCount}) • </span>
+            <span className="grey">{country}</span>
         </div>
-        <p>Life Lessons with Katie Zaferes</p>
-        <p><span className="bold">From $136</span> / person</p>
+        <p>{title}</p>
+        <p><span className="bold">From ${price}</span> / person</p>
     </div>
     )
 }

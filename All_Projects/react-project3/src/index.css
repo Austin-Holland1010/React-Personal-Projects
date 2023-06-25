@@ -49,6 +49,10 @@ section {
 .card {
   width: 175px;
   font-size: 12px;
+  flex: 0 0 auto;         /* ADD */
+  display: flex;          /* ADD */
+  flex-direction: column; /* ADD */
+  position: relative;
 }
 
 .card--image {
@@ -109,6 +113,13 @@ body {
   font-size: 18px;
 }
 
+.cards-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+}
+
 .info-group {
   display: flex;
   align-items: center;
@@ -123,4 +134,14 @@ body {
   margin-block: 3px;
   font-size: 12px;
   color: #2B283A;
+}
+
+.card--badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: white;
+  padding: 5px 7px;
+  border-radius: 2px;
+  font-weight: bold;
 }

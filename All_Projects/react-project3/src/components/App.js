@@ -3,19 +3,45 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Card from "./Card";
 import Contact from "./Contact";
+import jokesData from "../data/jokesData";
+import Joke from "./Joke";
+import data from "../data/data";
 
-/*
+
 export default function App() {
+    const cards = data.map(item => {
+        /*return <Card 
+            img={"/images/" + card.coverImg}
+            rating={card.stats.rating}
+            reviewCount={card.stats.reviewCount}
+            country={card.location}
+            title={card.title}
+            price={card.price}
+            openSpots={card.openSpots}
+        />
+        */
+       return (
+        <Card 
+            key={item.id}
+            item={item}
+        />
+       )
+    })
+    
     return (
         <div>
             <Navbar />
             <Hero />
-            <Card />
+            <section className="cards-list">
+                {cards}
+            </section>
         </div>
     )
 }
-*/
 
+
+
+/*
 function App() {
     return(
         <div>
@@ -48,3 +74,20 @@ function App() {
 }
 
 export default App
+*/
+
+/*
+export default function App() {
+    const jokeElements = jokesData.map(joke => {
+        return <Joke 
+            setup={joke.setup} 
+            punchline={joke.punchline}
+        />
+    })
+    return (
+        <div>
+            {jokeElements}
+        </div>
+    )
+}
+*/
