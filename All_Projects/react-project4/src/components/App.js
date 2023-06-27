@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "./Header";
 import Meme from "./Meme";
+import Count from "./Count";
+import Star from "./Star";
 
-
+/*
 function App() {
     return (
         <div>
@@ -13,6 +15,7 @@ function App() {
 }
 
 export default App
+*/
 
 
 /*
@@ -116,3 +119,209 @@ export default function App() {
 
 */
 
+/*export default function App() {
+    /**
+     * Challenge: 
+     * - Initialize state for `isGoingOut` as a boolean
+     * - Make it so clicking the div.state--value flips that
+     *   boolean value (true -> false, false -> true)
+     * - Display "Yes" if `isGoingOut` is `true`, "No" otherwise
+     
+    const [isGoingOut, setIsGoingOut] = React.useState(true)
+    
+    function changeIsGoingOut()
+    {
+        setIsGoingOut(function() {
+            return !isGoingOut
+        })
+    }
+
+    return (
+        <div className="state">
+            <h1 className="state--title">Do I feel like going out tonight?</h1>
+            <div onClick={changeIsGoingOut} className="state--value">
+                <h1>{isGoingOut ? "Yes" : "No"}</h1>
+            </div>
+        </div>
+    )
+}
+*/
+
+/*
+export default function App() {
+    /**
+     * Challenge: Convert the code below to use an array
+     * held in state instead of a local variable. Initialize 
+     * the state array with the same 2 items below
+     * 
+     * Don't worry about fixing `addItem` quite yet.
+     
+    const [thingsArray, setThingsArray] = React.useState(["Thing 1", "Thing 2"])
+    
+    function addItem() {
+        setThingsArray(prevThingsArray => {
+            return [...prevThingsArray, `Thing ${prevThingsArray.length + 1}`]
+        })
+    }
+    
+    const thingsElements = thingsArray.map(thing => <p key={thing}>{thing}</p>)
+    
+    return (
+        <div>
+            <button onClick={addItem}>Add Item</button>
+            {thingsElements}
+        </div>
+    )
+}
+*/
+
+/*
+export default function App() {
+    const [contact, setContact] = React.useState({
+        firstName: "John",
+        lastName: "Doe",
+        phone: "+1 (719) 555-1212",
+        email: "itsmyrealname@example.com",
+        isFavorite: true
+    })
+
+    /**
+     * Challenge: Use a ternary to determine which star image filename
+     * should be used based on the `contact.isFavorite` property
+     * 
+     * `true` => "star-filled.png"
+     * `false` => "star-empty.png"
+     
+
+    /**
+     * Challenge: Fill in the values in the markup
+     * using the properties of our state object above
+     * (Ignore `isFavorite` for now)
+     
+
+    let starIcon = contact.isFavorite ? "/images/star-filled.png" : "/images/star-empty.png"
+    
+    function toggleFavorite() {
+        setContact(prevContact => {
+           
+            return {
+                /* Same as the following
+                firstName: "John",
+                lastName: "Doe",
+                phone: "+1 (719) 555-1212",
+                email: "itsmyrealname@example.com",
+                isFavorite: true,   
+                isFavorite: !prevContact.isFavorite
+                
+                ...prevContact, 
+                isFavorite: !prevContact.isFavorite
+            }
+        })
+    }
+    
+    return (
+        <main>
+            <article className="card">
+                <img src="/images/user.png" className="card--image" />
+                <div className="card--info">
+                    <img 
+                        src={starIcon} 
+                        className="card--favorite"
+                        onClick={toggleFavorite}
+                    />
+                    <h2 className="card--name">
+                        {contact.firstName + " " + contact.lastName}
+                    </h2>
+                    <p className="card--contact">{contact.phone}</p>
+                    <p className="card--contact">{contact.email}</p>
+                </div>
+                
+            </article>
+        </main>
+    )
+}
+*/
+
+/*
+export default function App() {
+    const [count, setCount] = React.useState(0)
+    
+    function add() {
+        setCount(prevCount => prevCount + 1)
+    }
+    
+    function subtract() {
+        setCount(prevCount => prevCount - 1)
+    }
+    
+    /**
+     * Challenge:
+     * - Create a new component named Count
+     *    - It should receive a prop called `number`, whose value
+     *      is the current value of our count
+     *    - Have the component render the whole div.counter--count
+     *      and display the incoming prop `number`
+     * - Replace the div.counter--count below with an instance of
+     *   the new Count component
+     
+    return (
+        <div className="counter">
+            <button className="counter--minus" onClick={subtract}>–</button>
+            <Count 
+                number={count}
+            />
+            <button className="counter--plus" onClick={add}>+</button>
+        </div>
+    )
+}
+*/
+
+export default function App() {
+    const [contact, setContact] = React.useState({
+        firstName: "John",
+        lastName: "Doe",
+        phone: "+1 (719) 555-1212",
+        email: "itsmyrealname@example.com",
+        isFavorite: true
+    })
+    
+    /**
+     * Challenge: Move the star image into its own component
+     * - It should receive a prop called `isFilled` that it
+     *   uses to determine which icon it will display
+     * - Import and render that component, passing the value of
+     *   `isFavorite` to the new `isFilled` prop.
+     * - Don't worry about the abiliity to flip this value quite yet.
+     *   Instead, you can test if it's working by manually changing
+     *   `isFavorite` in state above.
+     */
+    
+    let starIcon = contact.isFavorite ? "star-filled.png" : "star-empty.png"
+    
+    function toggleFavorite() {
+        setContact(prevContact => ({
+            ...prevContact,
+            isFavorite: !prevContact.isFavorite
+        }))
+    }
+    
+    return (
+        <main>
+            <article className="card">
+                <img src="./images/user.png" className="card--image" />
+                <div className="card--info">
+                    <Star 
+                        isFilled={contact.isFavorite}
+                        handleClick={toggleFavorite}
+                    />
+                    <h2 className="card--name">
+                        {contact.firstName} {contact.lastName}
+                    </h2>
+                    <p className="card--contact">{contact.phone}</p>
+                    <p className="card--contact">{contact.email}</p>
+                </div>
+                
+            </article>
+        </main>
+    )
+}
