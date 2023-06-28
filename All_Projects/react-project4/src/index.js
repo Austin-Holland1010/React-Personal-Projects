@@ -22,10 +22,18 @@ function App() {
 }
 */
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <App />
 );
+
+
+
+
+
+
 
 /*
 1. How would you describe the concept of "state"?
