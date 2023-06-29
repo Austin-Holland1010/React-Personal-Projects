@@ -5,6 +5,8 @@ import Count from "./Count";
 import Star from "./Star";
 import boxes from "./data/boxes";
 import BoxComp from "./BoxComp";
+import Joke from "./Joke";
+import jokesData from "./data/jokesData";
 
 /*
 function App() {
@@ -330,6 +332,7 @@ export default function App() {
 }
 */
 
+/*
 export default function App(props) {
     /**
      * Challenge part 1:
@@ -342,11 +345,11 @@ export default function App(props) {
     const styles = {
         backgroundColor: props.darkMode ? "#222222" : "#cccccc"
     }
-    */
+    
 
     const [boxData, setBoxData] = React.useState(boxes)
     const mappedBoxes = boxData.map(box => (
-        <BoxComp on={box.on}/>
+        <BoxComp on={box.on} id={box.id}/>
     ))
 
 /**
@@ -358,12 +361,99 @@ export default function App(props) {
      * 3. In the Box component, apply dynamic styles to determine
      *    the backgroundColor of the box. If it's `on`, set the
      *    backgroundColor to "#222222". If off, set it to "none"
-     */
-
-
+     
     return (
         <main>
             {mappedBoxes}
         </main>
+    )
+}*/
+
+/*
+
+export default function App() {
+    const [squares, setSquares] = React.useState(boxes)
+    
+    /**
+     * Challenge: Create a toggle() function that logs
+     * "clicked!" to the console
+     * 
+     * Pass that function down to each of the Box components
+     * and set it up so when they get clicked it runs the function
+     
+    * Challenge: use setSquares to update the
+    * correct square in the array.
+    * 
+    * Make sure not to directly modify state!
+    * 
+    * Hint: look back at the lesson on updating arrays
+    * in state if you need a reminder on how to do this
+    
+    function toggle(id) {
+        
+        setSquares(prevSquares => {
+            return (prevSquares.map(square => {
+                return square.id === id ? {...square, on :!square.on} : {...square}
+            }))
+        })
+                
+        /*
+        setSquares(prevSquares => {
+            const newSquares = []
+            for(let i = 0; i < prevSquares.length; i++) {
+                const currentSquare = prevSquares[i]
+                if(currentSquare.id === id) {
+                    const updatedSquare = {
+                        ...currentSquare,
+                        on: !currentSquare.on
+                    }
+                    newSquares.push(updatedSquare)
+                } else {
+                    newSquares.push(currentSquare)
+                }
+            }
+
+            //Could also be
+            /*
+            setSquares(prevSquares => {
+                return prevSquares.map((square) => {
+                    return square.id === id ? {...square, on: !square.on} : square
+            })
+        })
+            
+           // return newSquares
+        //})
+    }
+
+    const squareElements = squares.map(square => (
+        <BoxComp 
+            key={square.id} 
+            on={square.on}
+            toggle={() => toggle(square.id)} 
+        />
+    ))
+    
+    return (
+        <main>
+            {squareElements}
+        </main>
+    )
+}
+*/
+
+export default function App() {
+    const jokeElements = jokesData.map(joke => {
+        return (
+            <Joke 
+                key={joke.id}
+                setup={joke.setup} 
+                punchline={joke.punchline} 
+            />
+        )
+    })
+    return (
+        <div>
+            {jokeElements}
+        </div>
     )
 }
