@@ -6,8 +6,8 @@ import Star from "./Star";
 import boxes from "./data/boxes";
 import BoxComp from "./BoxComp";
 import Joke from "./Joke";
-import jokesData from "./data/jokesData";
-
+import jokesData from "./data/jokesData"
+import Form from "./Form";
 /*
 function App() {
     return (
@@ -441,6 +441,7 @@ export default function App() {
 }
 */
 
+/*
 export default function App() {
     const jokeElements = jokesData.map(joke => {
         return (
@@ -454,6 +455,15 @@ export default function App() {
     return (
         <div>
             {jokeElements}
+        </div>
+    )
+}
+*/
+
+export default function App() {
+    return (
+        <div>
+            <Form />
         </div>
     )
 }

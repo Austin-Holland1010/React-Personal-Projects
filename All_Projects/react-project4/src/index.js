@@ -65,4 +65,23 @@ root.render(
   Unchanging. Props are immutable. State is mutable.
 
 */
+/*
+1. What is "conditional rendering"?
+  conditional rendering is where what is rendered is based on
+  the current data being worked with or the current state.
 
+
+2. When would you use &&?
+  Use && when you want to render something whenever the 
+  value within the variable isn't falsey 
+
+
+3. When would you use a ternary?
+  When you need to decide which thing among 2 options to display
+
+
+
+4. What if you need to decide between > 2 options on
+   what to display?
+  Use an `if...else if... else` conditional or a `switch` statement
+*/
