@@ -8,6 +8,8 @@ import BoxComp from "./BoxComp";
 import Joke from "./Joke";
 import jokesData from "./data/jokesData"
 import Form from "./Form";
+import WindowTracker from "./WindowTracker";
+
 /*
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
 
 export default App
 */
+
+
 
 
 /*
@@ -460,10 +464,203 @@ export default function App() {
 }
 */
 
+/*
 export default function App() {
     return (
         <div>
             <Form />
+        </div>
+    )
+}
+*/
+
+//export default function App() {
+    
+    /**
+     * Challenge: Connect the form to local state
+     * 
+     * 1. Create a state object to store the 4 values we need to save.
+     * 2. Create a single handleChange function that can
+     *    manage the state of all the inputs and set it up
+     *    correctly
+     * 3. When the user clicks "Sign up", check if the 
+     *    password & confirmation match each other. If
+     *    so, log "Successfully signed up" to the console.
+     *    If not, log "passwords to not match" to the console.
+     * 4. Also when submitting the form, if the person checked
+     *    the "newsletter" checkbox, log "Thanks for signing
+     *    up for our newsletter!" to the console.
+     */
+/*
+    const [formData, setFormData] = React.useState(
+        {
+            email: "",
+            password: "",
+            verifyPassword: "",
+            newsletter: true
+        }
+    )
+
+    console.log(formData)
+
+    function handleChange(event) {
+        const {name, value, type, checked} = event.target
+        setFormData(prevData => {
+            return (
+                {
+                    ...prevData,
+                    [name]: type === "checkbox" ? checked : value
+                }
+            )
+        })
+    }
+    
+    function handleSubmit(event) {
+        event.preventDefault()
+        if(formData.password === formData.verifyPassword)
+        {
+            console.log("Successfully signed up")
+            if(formData.newsletter === true)
+            console.log("Thanks for signing up for our newsletter")
+        } else {
+            console.log("Passwords do not match")
+        }
+    }
+    
+    return (
+        <div className="form-container">
+            <form className="form" onSubmit={handleSubmit}>
+                <input 
+                    type="email" 
+                    placeholder="Email address"
+                    className="form--input"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    
+                />
+                <input 
+                    type="password" 
+                    placeholder="Password"
+                    className="form--input"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                />
+                <input 
+                    type="password" 
+                    placeholder="Confirm password"
+                    className="form--input"
+                    name="verifyPassword"
+                    value={formData.verifyPassword}
+                    onChange={handleChange}
+                />
+                
+                <div className="form--marketing">
+                    <input
+                        id="okayToEmail"
+                        type="checkbox"
+                        name="newsletter"
+                        checked={formData.newsletter}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="okayToEmail">I want to join the newsletter</label>
+                </div>
+                <button 
+                    className="form--submit"
+                >
+                    Sign up
+                </button>
+            </form>
+        </div>
+    )
+}
+*/
+/*
+export default function App() {
+    const [starWarsdata, setstarWarsData] = React.useState({})
+    const [count, setCount] = React.useState(1)
+    
+    console.log("Component rendered")
+    // 1. GET the data (fetch)
+    // 2. Save the data to state
+
+    /**
+     * Challenge: Combine `count` with the request URL
+     * so pressing the "Get Next Character" button will
+     * get a new character from the Star Wars API.
+     * Remember: don't forget to consider the dependencies
+     * array!
+     
+
+    // side effects
+   React.useEffect(() => {
+        console.log("Effect function run")
+        fetch("https://swapi.dev/api/people/" + count)
+        .then(res => res.json())
+        .then(data => setstarWarsData(data))
+   }, [count])
+
+    return (
+        <div>
+            <h2>The count is {count}</h2>
+            <button onClick={() => setCount(prevCount => prevCount + 1)}>Get Next Character</button>
+            <pre>{JSON.stringify(starWarsdata, null, 2)}</pre>
+        </div>
+    )
+}
+*/
+/*
+1. What is a "side effect" in React? What are some examples?
+    - A side effect is any code that you want to run
+        that react is not incharge of handling.
+    - local storage, API calls, any code that effects an
+        outside system
+
+
+2. What is NOT a "side effect" in React? Examples?
+    - Anything that React is incharge of
+    - Ex: state, keeping UI in sync with data
+
+
+3. When does React run your useEffect function? When does it NOT run
+   the effect function?
+   - As soon as the component loads (1st render)
+   - On every re-render of the component (no dependencies array)
+   - Will NOT run the effect when the dependencies in the array stay the same
+      between renders
+   
+
+4. How would you explain what the "dependecies array" is?
+    - 2nd parameter to the useEffect function
+    - When a component re-renders it is compared to the previous
+        array. If changes are deteted the code in the useEffect is ran
+
+*/
+
+export default function App() {
+    /**
+     * Challenge:
+     * 1. Create state called `show`, default to `true`
+     * 2. When the button is clicked, toggle `show`
+     * 3. Only display `<WindowTracker>` if `show` is `true`
+     */
+    
+    const [show, setShow] = React.useState(true)
+
+    console.log(show)
+    
+    function handleShowChange() {
+        setShow(prevValue => {
+            return !show
+        })
+    }
+    return (
+        <div className="container">
+            <button onClick={handleShowChange}>
+                Toggle WindowTracker
+            </button>
+            {show ? <WindowTracker /> : <p></p>}
         </div>
     )
 }

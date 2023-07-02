@@ -32,8 +32,13 @@ function Form () {
         })
     }
 
+    function handleSubmit(event) {
+        event.preventDefault()
+        //submitToApi(formData)
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="First Name"
@@ -126,8 +131,39 @@ function Form () {
                 <option value="violet">Violet</option>
             </select>
 
+            <button>Submit</button>
         </form>
     )
 }
 
 export default Form
+
+/*
+1. In a vanilla JS app, at what point in the form submission
+   process do you gather all the data from the filled-out form?
+    -Upon submit.
+
+
+2. In a React app, when do you gather all the data from
+   the filled-out form?
+    -As the data is entered it is saved into the current state.
+
+
+3. Which attribute in the form elements (value, name, onChange, etc.)
+   should match the property name being held in state for that input?
+    -The name attribute should be the same as the state.
+
+
+4. What's different about saving the data from a checkbox element
+   vs. other form elements?
+    -The checkbox is a boolean. So you look at the 'checked' property
+        instead of the 'value' property 
+
+
+5. How do you watch for a form submit? How can you trigger
+   a form submit?
+   - Use the onSubmit attribute of the form to call a method
+        that handles the submit
+   - To trigger it add a button to the form. Since it is in the form it
+        will automatically be considered a submit button
+   */
